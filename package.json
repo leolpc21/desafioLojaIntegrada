@@ -1,0 +1,20 @@
+{
+  "name": "desafiolojaintegrada",
+  "version": "1.0.0",
+  "description": "Projeto para realizar o desafio técnico da Loja Integrada",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "keywords": [
+    "cypress",
+    "nodejs",
+    "desafio",
+    "lojaIntegrada"
+  ],
+  "author": "Leonardo Costa",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.5.1"
+  }
+}
