@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 import genericsUtils from "../support/utils";
 
-Cypress.Commands.add('addProdutoCarrinho', function () {
-  cy.get('.prod-id-118475035').click()
-  cy.get('.principal .comprar').click()
+Cypress.Commands.add('addProdutoCarrinho', function (produto) {
+  cy.get(`.listagem-item:contains("${produto}")`)
+    .click()
+  cy.get('.principal .comprar')
+    .click()
 })
 
 Cypress.Commands.add("esperar", function (wait, status) {
@@ -12,9 +14,15 @@ Cypress.Commands.add("esperar", function (wait, status) {
     .should("eq", status);
 });
 
+Cypress.Commands.add("validarValorCupom", function (text) {
+  cy.get('.cupom-valor')
+    .find('strong')
+    .invoke('text')
+    .should('equal', text)
+})
+
 Cypress.Commands.add('calcularFrete', function (cep) {
   cy.intercept('GET', 'https://qastoredesafio.lojaintegrada.com.br/carrinho/valor/**').as('calcularFrete')
-
   cy.get('#calcularFrete')
     .type(cep)
   cy.get('#btn-frete')
@@ -27,7 +35,6 @@ Cypress.Commands.add('calcularFrete', function (cep) {
 
 Cypress.Commands.add('aplicarCupom', function (cupom) {
   cy.intercept('GET', 'https://qastoredesafio.lojaintegrada.com.br/carrinho/valor/**').as('usarCupom')
-
   cy.get('#usarCupom')
     .type(cupom)
   cy.get('#btn-cupom')
@@ -44,8 +51,10 @@ Cypress.Commands.add('aplicarCupom', function (cupom) {
           .find('strong')
           .invoke('text')
           .then((text) => {
+            Cypress.env('cupomValor1', text)
+
             var valor = genericsUtils.functionNumero(text)
-            Cypress.env('cupomValor', valor)
+            Cypress.env('cupomValor2', valor)
           })
       }
       Cypress.env('valorFreteMoeda', genericsUtils.functionMoeda(Cypress.env('valorFrete')))

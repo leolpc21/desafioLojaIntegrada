@@ -3,6 +3,11 @@ import genericsUtils from "../support/utils";
 
 describe('Validar cupons', () => {
 
+  var produtos = {
+    produto1: '[CATEGORIA] Produto com categoria - 2 Nível',
+    produto2: '[CATEGORIA] Produto com categoria - 3 Nível'
+  }
+
   var cupons = {
     freteGratis: 'FRETEGRATIS',
     off10: '10OFF',
@@ -16,8 +21,8 @@ describe('Validar cupons', () => {
 
   beforeEach(function () {
     cy.visit('/')
-    cy.addProdutoCarrinho()
-    cy.calcularFrete('32183160')
+    cy.addProdutoCarrinho(produtos.produto1)
+    cy.calcularFrete('32183190')
   })
 
   context('Validar aplicação de cupons', () => {
@@ -57,15 +62,13 @@ describe('Validar cupons', () => {
     })
 
     it('Validar desconto cupom ', () => {
-
       cy.get('.formas-envio').contains('Frete Grátis')
       cy.get('.cupom-valor').contains('Frete Grátis')
       cy.get('label:contains("Frete Grátis")')
         .find('.valor')
         .contains(Cypress.env('valorFreteMoeda'))
-
       var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), 0, Cypress.env('valorFrete'))
-
+      cy.get('[data-subtotal-valor]').contains(genericsUtils.functionMoeda(valorTotal))
       cy.get('[data-total-valor]').contains(genericsUtils.functionMoeda(valorTotal))
     });
   })
@@ -77,13 +80,8 @@ describe('Validar cupons', () => {
     })
 
     it('Validar desconto cupom', () => {
-      cy.get('.cupom-valor')
-        .find('strong')
-        .invoke('text')
-        .should('equal', '\n                            \n                              10 %\n                            \n                          ')
-
-      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor'), Cypress.env('valorFrete'))
-
+      cy.validarValorCupom(Cypress.env('cupomValor1'))
+      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor2'), Cypress.env('valorFrete'))
       cy.get('[data-total-valor]').contains(genericsUtils.functionMoeda(valorTotal))
     });
   })
@@ -95,13 +93,8 @@ describe('Validar cupons', () => {
     })
 
     it('Validar desconto cupom', () => {
-      cy.get('.cupom-valor')
-        .find('strong')
-        .invoke('text')
-        .should('equal', '\n                            \n                              R$ 30,00\n                            \n                          ')
-
-      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor'), Cypress.env('valorFrete'))
-
+      cy.validarValorCupom(Cypress.env('cupomValor1'))
+      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor2'), Cypress.env('valorFrete'))
       cy.get('[data-total-valor]').contains(genericsUtils.functionMoeda(valorTotal))
     });
   })
@@ -113,13 +106,8 @@ describe('Validar cupons', () => {
     })
 
     it('Validar desconto cupom', () => {
-      cy.get('.cupom-valor')
-        .find('strong')
-        .invoke('text')
-        .should('equal', '\n                            \n                              5 %\n                            \n                          ')
-
-      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor'), Cypress.env('valorFrete'), true)
-
+      cy.validarValorCupom(Cypress.env('cupomValor1'))
+      var valorTotal = genericsUtils.functionValorTotal(Cypress.env('tipoDesconto'), Cypress.env('valorItens'), Cypress.env('cupomValor2'), Cypress.env('valorFrete'), true)
       cy.get('[data-total-valor]').contains(genericsUtils.functionMoeda(valorTotal))
     });
   })
