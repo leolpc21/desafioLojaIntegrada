@@ -1,19 +1,16 @@
-### Desafio Loja Integrada
+# Desafio Loja Integrada
 
 ## Plano de teste
 
-# 1.	Nome do projeto
-Aplicar cupons de desconto no carrinho de compras
-
-# 2.	Resumo
+### 2.	Resumo
 Há um grande número de usuários aplicando cupons de descontos em datas comerciais, como a Black Friday.
 Acredita-se que quando o usuário acessar seu carrinho, terá um campo para inserir um cupom e um botão para aplicar o seu desconto.
 Deseja-se verificar se ao clicar no botão "Usar cupom", o cupom será aplicado e será descontado o seu devido valor.
 
-# 3. Pessoas envolvidas
+### 3. Pessoas envolvidas
 Leonardo Costa
 
-# 4. Funcionalidade a ser testado
+### 4. Funcionalidade a ser testado
 A nova feature CUPOM da funcionalidade carrinho.
 
 Será testado:
@@ -25,7 +22,7 @@ Será testado:
 Não será testado:
 - Produto sendo adicionado no carrinho.
 
-# 5. Critérios de aceite
+### 5. Critérios de aceite
 
 Ao aplicar cupons válidos:
 - O cupom será aplicado e será mostrado o que será descontado.
@@ -50,12 +47,19 @@ Ao aplicar cupons válidos:
   - No campo do cupom terá a porcentagem de desconto
   - O valor total será o valor do subtotal + valor do frete - 5%
 
+Ao aplicar cupons inválidos:
+- O cupom não será aplicado e será apresentado em uma tarja vermelha um alerta de invalidade.
+- Cupom "CUPOMVENCIDO"
+  - Será apresentado a mensagem "O cupom não é válido."
+- Cupom "CUPOMINVENTADO"
+  - Será apresentado a mensagem "Cupom não encontrado."
+
 
 ## Report de inconsistência
 
 Titulo: Cupom não encontrado
 
-Descrição: Ao aplicar o cupom 20LIMITADO está apresentando a mensagem de que o cupom não existe.
+Descrição: Ao aplicar o cupom "20LIMITADO" está apresentando a mensagem de que o cupom não existe.
 
 Para reproduzir a inconsistência seguir os passos:
 1. Na tela do carrinho com um produto adicionado
@@ -64,5 +68,5 @@ Para reproduzir a inconsistência seguir os passos:
 4. Será apresentado a mensagem "Cupom não encontrado." em uma tarja vermelha.
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/43275999/221320764-3b490143-1a40-4d62-a7b2-f1fc4102eef5.jpeg" width="750px" />
+<img src="https://user-images.githubusercontent.com/43275999/221322041-ef0ff32b-27d1-41a1-87a1-cbffb86af21e.jpeg" width="750px" />
 </div>
