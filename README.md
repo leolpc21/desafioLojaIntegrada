@@ -88,6 +88,7 @@ No contexto 3, foi feito 1 teste:
 
   Neste teste foram realizados as seguintes validações:
     - No campo do cupom, se possui a porcentagem de desconto;
+    - No campo do cupom, se possui a frase "(frete não incluso)"
     - Validação do valor Total é de acordo com a fórmula valorTotal = (valorItem - (valorItem * (valorCupom / 100))) + valorFrete
 
 No contexto 4, foi feito 1 teste:
@@ -95,6 +96,7 @@ No contexto 4, foi feito 1 teste:
 
   Neste teste foram realizados as seguintes validações:
     - No campo do cupom, se possui o valor fixo de desconto;
+    - No campo do cupom, se possui a frase "(frete não incluso)"
     - Validação do valor Total é de acordo com a fórmula valorTotal = (valorItem - valorCupom) + valorFrete
 
 No contexto 5, foi feito 1 teste:
