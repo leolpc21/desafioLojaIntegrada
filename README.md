@@ -2,6 +2,9 @@
 
 ## Plano de teste
 
+### 1. Nome do projeto
+Aplicar cupons de desconto no carrinho de compras
+
 ### 2.	Resumo
 Há um grande número de usuários aplicando cupons de descontos em datas comerciais, como a Black Friday.
 Acredita-se que quando o usuário acessar seu carrinho, terá um campo para inserir um cupom e um botão para aplicar o seu desconto.
