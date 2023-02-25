@@ -57,6 +57,53 @@ Ao aplicar cupons inválidos:
 - Cupom "CUPOMINVENTADO"
   - Será apresentado a mensagem "Cupom não encontrado."
 
+### 6. Estratégia dos testes
+
+Os testes foram separados em 5 contextos:
+  1. Validar aplicação de cupons;
+  2. Validar cupom Frete grátis;
+  3. Validar cupom 10OFF;
+  4. Validar cupom 30REAIS;
+  5. Validar cupom AJJFLWBHH.
+
+No contexto 1, foram realizados 2 testes:
+  1. Validar aplicação dos cupons válidos;
+  2. Validar alerta de mensagens dos cupons inválidos.
+
+  No teste 1 é realizado a aplicação do cupom e validado se no campo do cupom possui o cupom aplicado.
+  No teste 2 é realizado a aplicação do cupom e validado a mensagem do alerta.
+
+No contexto 2, foi feito 1 teste:
+  - Validar o desconto do cupom "FRETEGRATIS"
+
+  Neste teste foram realizados as seguintes validações:
+    - No campo de formas de envio, se possui a frase "Frete grátis";
+    - No campo do cupom, se possui a frase "Frete grátis";
+    - No campo de formas de envio, se possui o valor zerado do frete;
+    - Comparação dos valores Total e Subtotal se são iguais.
+    - Validação do valor Total é de acordo com a fórmula valorTotal = valorItem + valorFrete
+
+No contexto 3, foi feito 1 teste:
+  - Validar o desconto do cupom "10OFF"
+
+  Neste teste foram realizados as seguintes validações:
+    - No campo do cupom, se possui a porcentagem de desconto;
+    - Validação do valor Total é de acordo com a fórmula valorTotal = (valorItem - (valorItem * (valorCupom / 100))) + valorFrete
+
+No contexto 4, foi feito 1 teste:
+  - Validar o desconto do cupom "30REAIS"
+
+  Neste teste foram realizados as seguintes validações:
+    - No campo do cupom, se possui o valor fixo de desconto;
+    - Validação do valor Total é de acordo com a fórmula valorTotal = (valorItem - valorCupom) + valorFrete
+
+No contexto 5, foi feito 1 teste:
+  - Validar o desconto do cupom "AJJFLWBHH"
+
+  Neste teste foram realizados as seguintes validações:
+    - No campo do cupom, se possui a porcentagem de desconto;
+    - Validação do valor Total é de acordo com a fórmula valorTotal = (valorItem + valorFrete) - ((valorItem + valorFrete) * (valorCupom / 100))
+
 
 ## Report de inconsistência
 
