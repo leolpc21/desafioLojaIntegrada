@@ -60,15 +60,15 @@ Ao aplicar cupons inválidos:
 ### 6. Estratégia dos testes
 
 Os testes foram separados em 5 contextos:
-  1- Validar aplicação de cupons;
-  2- Validar cupom Frete grátis;
-  3- Validar cupom 10OFF;
-  4- Validar cupom 30REAIS;
-  5- Validar cupom AJJFLWBHH.
+  - Validar aplicação de cupons;
+  - Validar cupom Frete grátis;
+  - Validar cupom 10OFF;
+  - Validar cupom 30REAIS;
+  - Validar cupom AJJFLWBHH.
 
 1. No contexto 1, foram realizados 2 testes:
-  1- Validar aplicação dos cupons válidos;
-  2- Validar alerta de mensagens dos cupons inválidos.
+  1. Validar aplicação dos cupons válidos;
+  2. Validar alerta de mensagens dos cupons inválidos.
 
   - No teste 1 é realizado a aplicação do cupom e validado se no campo do cupom possui o cupom aplicado.
   - No teste 2 é realizado a aplicação do cupom e validado a mensagem do alerta.
